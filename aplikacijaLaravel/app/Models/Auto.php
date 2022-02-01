@@ -22,4 +22,8 @@ class Auto extends Model
     public function kategorija(){
         return $this->belongsTo(Kategorija::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

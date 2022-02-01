@@ -23,6 +23,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function automobili(){
+        return $this->hasMany(Auto::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
