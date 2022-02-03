@@ -12,7 +12,7 @@ class Auto extends Model
     protected $fillable = [
         'model',
         'motor',
-        'godinaProizvodnje'
+        'godiste'
     ];
 
     public function proizvodjac(){

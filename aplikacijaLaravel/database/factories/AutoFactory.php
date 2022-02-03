@@ -18,7 +18,7 @@ class AutoFactory extends Factory
         return [
            'model'=>$this->faker->word(),
            'motor'=>$this->faker->word(),
-           'godinaProizvodnje'=>$this->faker->numberBetween(1950,2022),
+           'godiste'=>$this->faker->numberBetween(1950,2022),
            'proizvodjac_id'=>Proizvodjac::factory(),
            'kategorija_id'=>$this->faker->numberBetween(1,4),
            'user_id'=>User::factory()

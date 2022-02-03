@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('autos', AutoController::class);
+//Route::resource('autos', AutoController::class);
 Route::resource('kategorijas', KategorijaController::class);
 Route::resource('proizvodjacs', ProizvodjacController::class);
 Route::resource('users', UserController::class);

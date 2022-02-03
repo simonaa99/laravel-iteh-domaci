@@ -17,7 +17,7 @@ class CreateAutosTable extends Migration
             $table->id();
             $table->string('model');
             $table->string('motor');
-            $table->integer('godinaProizvodnje');
+            $table->integer('godiste');
             $table->foreignId('proizvodjac_id');
             $table->foreignId('kategorija_id');
             $table->foreignId('user_id');

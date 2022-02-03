@@ -13,14 +13,14 @@ class AutoResource extends JsonResource
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
 
-
+    public static $wrap='auto';
 
     public function toArray($request)
     {
         return [
           'model'=> $this -> resource->model,
             'motor'=> $this -> resource->motor,
-            'godinaPreoizvodnje' => $this -> resource->godinaProizvodnje,
+            'godinaPreoizvodnje' => $this -> resource->godiste,
             'proizvodjac_id'=> new ProizvodjacResource($this -> resource->proizvodjac),
            'kategorija_id'=>new KategorijaResource($this -> resource->kategorija),
            'user_id'=>new UserResource($this -> resource->user)

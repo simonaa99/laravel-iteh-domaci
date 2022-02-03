@@ -48,7 +48,7 @@ class AutoController extends Controller
 
         $my_autos=array();
         foreach($autos as $auto){
-            array_push($my_books,new AutoResource($auto));
+            array_push($my_autos,new AutoResource($auto));
         }
 
         return $my_autos;
@@ -59,7 +59,7 @@ class AutoController extends Controller
         if(count($autos)==0){
             return 'Nemate sacuvana kola!';
         }
-        $my_autoss=array();
+        $my_autos=array();
         foreach($autos as $auto){
             array_push($my_autos,new AutoResource($auto));
         }
@@ -67,7 +67,7 @@ class AutoController extends Controller
         return $my_autos;
     }
 
-    public function getByCategory($kategorija_id){
+    public function getByKategorija($kategorija_id){
         $autos=Auto::get()->where('kategorija_id',$kategorija_id);
 
         if(count($autos)==0){
@@ -93,7 +93,7 @@ class AutoController extends Controller
         $validator=Validator::make($request->all(),[
             'model'=>'required|String|max:255',
             'motor'=>'required|String|max:255',
-            'godinaProizvodnje'=>'required|Integer|max:4',
+            'godiste'=>'required|Integer|max:2023',
             'proizvodjac_id'=>'required',
             'kategorija_id'=>'required'
            
@@ -105,7 +105,7 @@ class AutoController extends Controller
         $auto=new Auto;
         $auto->model=$request->model;
         $auto->motor=$request->motor;
-        $auto->godinaProizvodnje=$request->godinaProizvodnje;
+        $auto->godiste=$request->godiste;
         $auto->user_id=Auth::user()->id;
         $auto->kategorija_id=$request->kategorija_id;
         $auto->proizvodjac_id=$request->proizvodjac_id;
@@ -149,19 +149,19 @@ class AutoController extends Controller
         $validator=Validator::make($request->all(),[
             'model'=>'required|String|max:255',
             'motor'=>'required|String|max:255',
-            'godinaProizvodnje'=>'required|Integer|max:4',
+            'godiste'=>'required|Integer|max:2023',
             'proizvodjac_id'=>'required',
             'kategorija_id'=>'required',
-            'user_id'=> 'required'
+            //'user_id'=> 'required'
         ]);
         if($validator->fails()){
             return response()->json($validator->errors());
         }
 
-        $auto=new Auto;
+        
         $auto->model=$request->model;
         $auto->motor=$request->motor;
-        $auto->godinaProizvodnje=$request->godinaProizvodnje;
+        $auto->godiste=$request->godiste;
         $auto->user_id=Auth::user()->id;
         $auto->kategorija_id=$request->kategorija_id;
         $auto->proizvodjac_id=$request->proizvodjac_id;
@@ -182,8 +182,9 @@ class AutoController extends Controller
      */
     public function destroy(Auto $auto)
     {
+
         $auto->delete();
 
-        return response()->json('Auto '.$auto->model .'je uspesno obrisan!');
+        return response()->json('Auto '.$auto->model .' je uspesno obrisan!');
     }
 }
